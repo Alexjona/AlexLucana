@@ -7,12 +7,13 @@ class Participante {
         this.ciudad = ciudad;
     }
 }
-
+/*
 const empleado1 = new Participante("1", "Analia", "Morales", 24, "Villa Lynch");
 const empleado2 = new Participante("2", "Noelia Melina", "Lopez", 20, "Villa del Parque");
 const empleado3 = new Participante("3", "Florencia", "Gomez", 21, "Villa Devoto");
+*/
 
-let participantes = [empleado1, empleado2, empleado3] // ex empleados
+let participantes = [] // ex empleados
 
 // Botones
 const boton1 = document.getElementById("agregar");
