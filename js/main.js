@@ -8,6 +8,7 @@ document.querySelector("#btn-reset").addEventListener("click", reset);
 
 document.querySelector("#listar").addEventListener("click", listar);
 document.querySelector("#btn-sortear").addEventListener("click", sortear);
+document.querySelector("#ver").addEventListener("click", Ganadores);
 
 //modelo de datos
 
@@ -79,8 +80,44 @@ function listar() {
     //    document.querySelector("#result").innerHTML = ` El ultimo ganador fue : ${ganador} . Presione reset para un nuevo sorteo =)`
 
     Swal.fire(
-        'algo',
+        `El último ganador fue ${ganador} !`,
         'Presione reset para un nuevo sorteo =)',
         'success'
     )
+}
+
+
+//anadir boton con id ver en index.html principal (ver ganadores)
+/*function programarBotonPreview() {
+    const btn = document.getElementById("ver");
+    btn.addEventListener("click", () => {
+        Ganadores();
+
+    })
+}*/
+
+function Ganadores() {
+    fetch("https://randomuser.me/api/?inc=gender,name,nat")
+        .then((response) => response.json())
+        .then((json) => mostrarDatos(json));
+
+}
+
+function mostrarDatos(data) {
+
+
+    let name = (data['results'][0]['name']['first'])
+    let last = (data['results'][0]['name']['last'])
+    console.log(name);
+    console.log(last);
+
+    const div = document.getElementById("result2");
+    div.innerHTML = "";
+
+    const divPost = document.createElement("div");
+    divPost.innerHTML = `<p>${name} ${last} ha ganado un sorteo cerca de ti</p>
+                        `
+
+    div.appendChild(divPost)
+
 }
