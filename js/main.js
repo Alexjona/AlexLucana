@@ -27,6 +27,12 @@ function agregar() {
     edades.push(edad);
 
 
+    Swal.fire(
+        `Se agrego a ${nombre} al sorteo!`,
+        'Presione ok para agregar otro',
+        'success'
+    )
+
     mostrar();
 
     document.querySelector('#nombre').value = "";
@@ -53,6 +59,9 @@ function reset() {
     edades = [];
     mostrar();
     document.querySelector("#result").innerHTML = ""
+
+    Swal.fire('Lista de participantes eliminada!')
+
 }
 
 function borrarUltimo() {
@@ -72,6 +81,12 @@ function sortear() {
     //Guardar ganador en el local Storage
     localStorage.setItem("Ganador", ganador);
 
+    Swal.fire(
+        ` El Ganador es : ${Nombres[random]} ${apellidos[random]} . Felicitaciones!`,
+        'Presione Reset para un nuevo sorteo =)',
+        'success'
+    )
+
 }
 
 function listar() {
@@ -81,7 +96,7 @@ function listar() {
 
     Swal.fire(
         `El último ganador fue ${ganador} !`,
-        'Presione reset para un nuevo sorteo =)',
+        'Presione Reset para un nuevo sorteo =)',
         'success'
     )
 }
